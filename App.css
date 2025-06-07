@@ -1,0 +1,97 @@
+body {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #23243a; /* Matches your slide */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Large, faint "O" in top left */
+body::before {
+  content: '';
+  position: fixed;
+  top: -120px;
+  left: -120px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 16px solid rgba(255,255,255,0.07);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Large, faint "X" in bottom right */
+body::after {
+  content: '';
+  position: fixed;
+  right: -100px;
+  bottom: -100px;
+  width: 220px;
+  height: 220px;
+  background: none;
+  z-index: 0;
+  pointer-events: none;
+  /* Draw X using box-shadows and transforms */
+  box-shadow:
+    0 0 0 8px rgba(255,255,255,0.07);
+  transform: rotate(45deg);
+}
+
+/* Dotted pattern in bottom right */
+.dots {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 10px);
+  grid-gap: 12px;
+  opacity: 0.15;
+}
+.dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd700;
+  display: block;
+}
+
+/* Decorative circle in top right */
+.circle-decor {
+  position: fixed;
+  top: 30px;
+  right: 60px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px dashed #ff7f50;
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  body::before, body::after {
+    width: 140px !important;
+    height: 140px !important;
+    border-width: 8px !important;
+  }
+  .circle-decor {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 15px;
+  }
+  .dots {
+    right: 10px;
+    bottom: 10px;
+    grid-gap: 6px;
+  }
+  .dots span {
+    width: 4px;
+    height: 4px;
+  }
+}
